@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: batchdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d batchdb"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/batchdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      INPUT_FILE: /data/sample-10k.csv
+      CHUNK_SIZE: 100
+      SPRING_BATCH_JOB_ENABLED: "true"
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: "health,info,prometheus"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./data/sample-10k.csv:/data/sample-10k.csv:ro
+    ports:
+      - "8080:8080"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    entrypoint: ["/bin/sh","-c","./scripts/wait-for-postgres.sh && java -jar /app/app.jar --spring.datasource.url=${SPRING_DATASOURCE_URL} --spring.datasource.username=${SPRING_DATASOURCE_USERNAME} --spring.datasource.password=${SPRING_DATASOURCE_PASSWORD} --inputFile=${INPUT_FILE} --spring.batch.job.enabled=${SPRING_BATCH_JOB_ENABLED}"]
+

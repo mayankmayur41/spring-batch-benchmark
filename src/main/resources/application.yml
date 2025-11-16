@@ -1,0 +1,63 @@
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/batchdb
+#    username: batchuser
+#    password: batchpass
+#    driver-class-name: org.postgresql.Driver
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#
+#  batch:
+#    initialize-schema: always
+spring:
+  application:
+    name: spring-batch-probe
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  batch:
+    job:
+      enabled: true
+    # This is now handled by spring.sql.init.mode below
+    initialize-schema: never
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:batchdb}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  # Use modern SQL initialization to explicitly create all required tables
+  sql:
+    init:
+      mode: embedded
+      schema-locations: classpath:db/spring-batch-schema-postgres.sql,classpath:db/schema.sql
+
+server:
+  port: ${SERVER_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+# Batch configuration
+chunk.size: ${CHUNK_SIZE:100}
+partition.grid: ${PARTITION_GRID:4}
+input.file: ${INPUT_FILE:data/sample-10k.csv}
+exit.on.complete: ${EXIT_ON_COMPLETE:false}
+
+logging:
+  level:
+    com.mayank.batch: INFO
+    org.springframework.batch: INFO
+    org.springframework.jdbc: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
