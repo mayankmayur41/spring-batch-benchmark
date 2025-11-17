@@ -1,0 +1,16 @@
+# Lightweight runtime Dockerfile that copies the already-built jar from target/
+FROM eclipse-temurin:17-jre-jammy
+
+WORKDIR /app
+
+# Copy the pre-built jar produced by ./mvnw package
+COPY target/*.jar app.jar
+
+EXPOSE 8080
+
+# Create an unprivileged user for runtime
+RUN useradd -m appuser || true
+USER appuser
+
+ENTRYPOINT ["java","-XX:+UseContainerSupport","-XX:MaxRAMPercentage=75.0","-jar","/app/app.jar"]
+
