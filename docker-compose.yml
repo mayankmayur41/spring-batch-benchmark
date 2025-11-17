@@ -10,7 +10,8 @@ services:
     volumes:
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
     ports:
-      - "5432:5432"
+      # Expose postgres on host 5433 -> container 5432 (optional); app will use internal hostname instead
+      - "5433:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d batchdb"]
       interval: 5s
@@ -22,15 +23,24 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     environment:
+      # Use Docker internal service DNS name and container port so app connects over the user network
       DB_HOST: postgres
       DB_PORT: 5432
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/batchdb
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+
+      # Batch/job control
       INPUT_FILE: /data/sample-10k.csv
       CHUNK_SIZE: 100
       SPRING_BATCH_JOB_ENABLED: "true"
-      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: "health,info,prometheus"
+
+      # Hikari settings: disable immediate fail-fast on startup when DB isn't ready (-1 disables)
+      SPRING_DATASOURCE_HIKARI_INITIALIZATION_FAIL_TIMEOUT: -1
+      # Optional: make Hikari validate connections more leniently
+      SPRING_DATASOURCE_HIKARI_VALIDATION_TIMEOUT: 3000
+      SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT: 30000
+
     depends_on:
       postgres:
         condition: service_healthy
@@ -43,5 +53,18 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-    entrypoint: ["/bin/sh","-c","./scripts/wait-for-postgres.sh && java -jar /app/app.jar --spring.datasource.url=${SPRING_DATASOURCE_URL} --spring.datasource.username=${SPRING_DATASOURCE_USERNAME} --spring.datasource.password=${SPRING_DATASOURCE_PASSWORD} --inputFile=${INPUT_FILE} --spring.batch.job.enabled=${SPRING_BATCH_JOB_ENABLED}"]
+    networks:
+      - appnet
 
+networks:
+  appnet:
+    driver: bridge
+
+# Notes / alternative (macOS):
+# If you prefer to connect to a Postgres instance running on the host (not in a container) mapped to host port 5433,
+# you can override the app's datasource URL when starting the container locally:
+#   docker run -e SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5433/batchdb \
+#     -e SPRING_DATASOURCE_USERNAME=postgres -e SPRING_DATASOURCE_PASSWORD=postgres \
+#     -p 8080:8080 spring-batch-probe:local
+# Or in docker-compose override the env with:
+#   SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5433/batchdb
