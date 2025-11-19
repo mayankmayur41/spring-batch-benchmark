@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: spring-batch-ksa
+  namespace: default
+  annotations:
+    iam.gke.io/gcp-service-account: batch-cloud-run-sa@carbon-scene-478408-c4.iam.gserviceaccount.com

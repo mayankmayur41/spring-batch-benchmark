@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: spring-batch-job
+spec:
+  template:
+    spec:
+      serviceAccountName: spring-batch-ksa
+      containers:
+      - name: spring-batch-app
+        image: asia-south1-docker.pkg.dev/carbon-scene-478408-c4/batch-repo/spring-batch-benchmark:latest
+        env:
+        # Activate the GKE-specific Spring profile
+        - name: SPRING_PROFILES_ACTIVE
+          value: "gke"
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:postgresql://127.0.0.1:5432/batchdb"
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "batchuser"
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: spring-batch-secrets
+              key: db-password
+        - name: INPUT_FILE
+          value: "gs://mayank_bucket-271999/sample-10k.csv"
+      - name: cloud-sql-proxy
+        image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.8.0
+        args:
+          - "--structured-logs"
+          - "--port=5432"
+          - "carbon-scene-478408-c4:asia-south1:mayank-sql"
+        securityContext:
+          runAsNonRoot: true
+      restartPolicy: Never
+  backoffLimit: 4

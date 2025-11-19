@@ -34,9 +34,18 @@ spring:
       connection-timeout: ${SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT:30000}
   # Use modern SQL initialization to explicitly create all required tables
   sql:
+    enabled: false
     init:
-      mode: embedded
+      mode: ${SPRING_SQL_INIT_MODE:embedded}
       schema-locations: classpath:db/spring-batch-schema-postgres.sql,classpath:db/schema.sql
+  cloud:
+    gcp:
+      # Use a single, clear property for the project ID
+      project-id: ${gcp.project.id:}
+      storage:
+        enabled: true
+      sql:
+        enabled: ${SPRING_CLOUD_GCP_SQL_ENABLED:false}
 
 server:
   port: ${SERVER_PORT:8080}
@@ -53,10 +62,17 @@ management:
     export:
       prometheus:
         enabled: true
+      stackdriver:
+        enabled: ${STACKDRIVER_METRICS_ENABLED:false}
+        # Use a single, clear property for the project ID
+        project-id: ${gcp.project.id:}
+        resource-type: global
+        step: 30s
 
 # Batch configuration
 chunk.size: ${CHUNK_SIZE:100}
 partition.grid: ${PARTITION_GRID:4}
+retry.maxAttempts: ${RETRY_MAX_ATTEMPTS:3}
 input.file: ${INPUT_FILE:data/sample-10k.csv}
 exit.on.complete: ${EXIT_ON_COMPLETE:false}
 

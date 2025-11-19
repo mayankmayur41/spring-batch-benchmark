@@ -92,6 +92,7 @@ public class RangePartitioner implements Partitioner {
             value.putInt("startAt", startAt);
             value.putInt("itemCount", itemCount);
             value.putString("inputFile", inputFile);
+            value.putString("partitionId", "partition" + number);
 
             log.info("Created partition {} -> startId={}, endId={}, startAt={}, itemCount={}", number, start, end, startAt, itemCount);
 

@@ -1,96 +1,207 @@
-# Spring Batch Benchmark
+# Spring Batch Benchmark – Cloud Run vs GKE
 
-Brief: This repository contains a Spring Boot + Spring Batch application used to demonstrate and benchmark batch processing jobs (ETL-like jobs: read -> process -> write). The README gives a high-level description of the codebase structure and how to build/run/test the application.
+**Author:** Mayank Mayur  
+**Project:** M.Tech Dissertation
 
-## High-level architecture
-- A Spring Boot application that configures and runs one or more Spring Batch jobs.
-- Jobs are composed of steps (read, process, write); configuration lives in Java config classes.
-- Uses a relational database (configured in application.yml) for JobRepository and job metadata.
-- Typical use: run the Jar and pass job parameters (or run locally via IDE/Gradle/Maven).
+---
 
-## Project file overview
-Below are common files and folders you will find in this project. Replace names where your project uses different packages or filenames.
+## Project Overview
 
-- pom.xml or build.gradle
-  - Build configuration, dependencies (Spring Boot, Spring Batch, DB drivers, test dependencies).
+This repository packages a Spring Boot + Spring Batch workload to benchmark two deployment targets on Google Cloud:
 
-- src/main/java/.../Application.java
-  - Main Spring Boot application class containing `public static void main(...)` and @SpringBootApplication.
+- **Cloud Run Jobs** (fully managed serverless)
+- **GKE Autopilot** (Kubernetes Job)
 
-- src/main/java/.../config/BatchConfig.java
-  - Core Spring Batch configuration: JobRepository, JobLauncher, JobBuilderFactory, StepBuilderFactory, transaction manager, chunk size defaults.
+It includes automation to build/push images, deploy to each platform, run benchmark matrices, capture metrics, and analyse KPIs such as latency, throughput, elasticity, cost, and operability.
 
-- src/main/java/.../job/JobConfig.java (or multiple job* files)
-  - Job and Step definitions (readers, processors, writers wired into steps and jobs).
+---
 
-- src/main/java/.../reader/*Reader*.java
-  - ItemReader implementations (FlatFileItemReader, JdbcPagingItemReader, etc.) that read input data.
+## 1. Build locally
 
-- src/main/java/.../processor/*Processor*.java
-  - ItemProcessor implementations that transform/validate items.
+- **Maven:** `mvn clean package -DskipTests`
+- **Docker (multi-stage):** `docker build -t spring-batch-benchmark -f docker/Dockerfile .`
 
-- src/main/java/.../writer/*Writer*.java
-  - ItemWriter implementations (JdbcBatchItemWriter, FlatFileItemWriter, etc.) that persist output.
+Jar output: `target/spring-batch-probe-1.0.0.jar`
 
-- src/main/java/.../domain/*.java
-  - Domain model classes (POJOs/entities processed by the job).
+---
 
-- src/main/java/.../repository/*.java
-  - Spring Data repositories or DAO helpers used by readers/writers or application services.
+## 2. Prerequisites & data
 
-- src/main/resources/application.yml (or application.properties)
-  - Application and Spring Batch configuration (datasource, job params defaults, logging, profiles).
+1. **GCP project** (free-tier or trial credits).
+2. **gcloud CLI** authenticated (`gcloud auth login`, `gcloud config set project <PROJECT_ID>`).
+3. **Cloud SQL (PostgreSQL) + GCS bucket:** follow `docs/gcp-setup.md` to provision:
+   - Cloud SQL instance (`db-f1-micro`), database, and user.
+   - GCS bucket for CSV datasets (upload via `scripts/upload_data_to_gcs.sh`).
+4. **Service accounts & IAM:** create dedicated service accounts with the roles listed in `docs/gcp-setup.md` and pass them to the deployment scripts (`SERVICE_ACCOUNT_EMAIL`, `GCP_SA_KEY_PATH`).
 
-- src/main/resources/schema-*.sql (optional)
-  - DB schema scripts for Spring Batch metadata tables (if not provided by the DB).
+> **Cloud SQL connection string**
+>
+> ```
+> SPRING_DATASOURCE_URL="jdbc:postgresql:///${DB_NAME}?socketFactory=com.google.cloud.sql.postgres.SocketFactory&cloudSqlInstance=${PROJECT_ID}:${REGION}:${INSTANCE}&user=${DB_USER}&password=${DB_PASS}"
+> ```
+>
+> Export this before running the deployment scripts to force Cloud SQL connectivity.
 
-- src/main/resources/jobs/* (optional)
-  - Static job files, sample CSVs, SQL, or other resources used by the job.
+---
 
-- src/test/java/...
-  - Unit and integration tests for jobs, steps, readers, processors, and writers.
+## 3. Build & push image (Artifact Registry)
 
-- README.md (this file)
-  - Project overview and usage instructions.
+```bash
+cd /Users/mayankmayur/Cursor/spring-batch-benchmark
+PROJECT_ID="your-project-id" \
+REGION="us-central1" \
+REPO_NAME="spring-batch-repo" \
+IMAGE_NAME="spring-batch-benchmark" \
+IMAGE_TAG="latest" \
+./scripts/build_and_push_image.sh
+```
 
-If your repository contains additional modules or utilities (metrics, monitoring, scripts), add short descriptions here.
+Outputs `us-central1-docker.pkg.dev/<PROJECT_ID>/spring-batch-repo/spring-batch-benchmark:latest`.
 
-## How to build
-- Using Maven:
-  - mvn clean package -DskipTests
-  - Jar will appear in target/*.jar
-- Using Gradle:
-  - ./gradlew clean build -x test
-  - Jar will appear in build/libs/
+---
 
-## How to run
-- Run the Spring Boot jar:
-  - java -jar target/spring-batch-benchmark-<version>.jar
-- To run a specific job and pass parameters:
-  - java -jar target/...jar --spring.batch.job.names=yourJobName jobParam1=value1 jobParam2=value2
-- Run from IDE:
-  - Run Application.java with an active profile that points to a valid datasource (see application.yml).
+## 4. Deploy platforms
 
-## Database and configuration notes
-- Ensure the datasource in application.yml/application.properties is configured and reachable.
-- Spring Batch requires metadata tables (BATCH_JOB_INSTANCE, BATCH_JOB_EXECUTION, etc.). Use the provided schema scripts or let Spring create them (depending on setup).
-- For benchmarking, tune chunk sizes, thread pools, and datasource pool settings in configuration.
+### 4.1 Cloud Run Job
 
-## Testing
-- Unit tests: mvn test or ./gradlew test
-- Integration tests (if present) may require a running DB or use Testcontainers/local test profile.
+```bash
+PROJECT_ID="your-project-id" \
+REGION="us-central1" \
+IMAGE="us-central1-docker.pkg.dev/your-project-id/spring-batch-repo/spring-batch-benchmark:latest" \
+SERVICE_ACCOUNT_EMAIL="batch-cloud-run-sa@your-project-id.iam.gserviceaccount.com" \
+SPRING_DATASOURCE_URL="jdbc:postgresql:///..." \
+INPUT_FILE="gs://batch-benchmark-data/datasets/sample-10k.csv" \
+STACKDRIVER_METRICS_ENABLED=true \
+./scripts/deploy_cloud_run_job.sh
 
-## Tips for extending
-- Add new jobs in job/ and register them in JobConfig or via auto-configuration.
-- Implement readers/processors/writers under dedicated packages for clarity.
-- Use profiles for environment-specific configuration: `--spring.profiles.active=local|prod|test`.
+gcloud run jobs execute spring-batch-benchmark-job \
+  --region=us-central1 \
+  --project=your-project-id
+```
 
-## Troubleshooting
-- Job not starting: ensure job name is correct and JobLauncher is invoked.
-- Missing Batch tables: run schema scripts or enable automatic schema creation.
-- Performance: profile DB, increase chunk size, consider partitioning or multi-threaded steps.
+Key env vars (`deploy_cloud_run_job.sh` handles defaults):
 
-## Next steps (optional)
-- Update this README with an exact file list from your repo. You can generate a list with:
-  - find . -maxdepth 3 -type f | sed 's|^\./||' | sort
-- Paste the list here and I will fill in file-specific descriptions for every file.
+| Variable | Purpose |
+| --- | --- |
+| `SPRING_DATASOURCE_URL` or (`DB_HOST`, `DB_PORT`, etc.) | Cloud SQL connectivity |
+| `INPUT_FILE` | CSV path (supports `gs://`) |
+| `CHUNK_SIZE`, `PARTITION_GRID`, `RETRY_MAX_ATTEMPTS` | Performance tuning |
+| `STACKDRIVER_METRICS_ENABLED` | Enables Cloud Monitoring export |
+
+### 4.2 GKE Autopilot Job
+
+```bash
+PROJECT_ID="your-project-id" \
+REGION="us-central1" \
+CLUSTER_NAME="spring-batch-benchmark" \
+./scripts/create_gke_cluster.sh
+
+IMAGE="us-central1-docker.pkg.dev/your-project-id/spring-batch-repo/spring-batch-benchmark:latest" \
+SPRING_DATASOURCE_URL="jdbc:postgresql:///..." \
+INPUT_FILE="gs://batch-benchmark-data/datasets/sample-10k.csv" \
+STACKDRIVER_METRICS_ENABLED=true \
+GCP_SA_KEY_PATH="/path/to/batch-gke-sa-key.json" \
+./scripts/deploy_gke_job.sh
+
+kubectl -n batch-benchmark logs -f job/spring-batch-benchmark-job
+```
+
+The script:
+
+- Creates namespace + DB credentials secret.
+- Optionally mounts a service account key (`GCP_SA_KEY_PATH`) for Cloud SQL access.
+- Injects tuning/env vars identical to the Cloud Run deployment.
+
+> Delete the Autopilot cluster when finished:
+> `gcloud container clusters delete spring-batch-benchmark --region us-central1 --project your-project-id`
+
+---
+
+## 5. Benchmark matrix & KPIs
+
+Use `docs/benchmarking-guide.md` for detailed methodology. Quick start:
+
+```bash
+PAYLOAD_FILES="gs://batch-benchmark-data/datasets/sample-10k.csv gs://batch-benchmark-data/datasets/sample-100k.csv" \
+CHUNK_SIZES="100 500" \
+GRID_SIZES="2 4" \
+RETRY_ATTEMPTS="1 3" \
+RUNS_PER_COMBINATION=2 \
+PROJECT_ID="your-project-id" \
+REGION="us-central1" \
+./scripts/run_benchmarks.sh
+```
+
+The harness:
+
+1. Redeploys Cloud Run + GKE jobs per combination (dataset, chunk size, partition grid, retry attempts).
+2. Executes each platform, waits for completion, and records:
+   - Platform, dataset, tuning parameters.
+   - Start/end timestamps, duration, success/failure.
+3. Outputs `benchmark-results.csv` ready for Pandas/Looker Studio analysis.
+
+KPIs to compute (see guide):
+
+- Latency (duration columns, or Cloud Monitoring metric `run.googleapis.com/job/execution_times`).
+- Throughput (join `benchmark-results.csv` with the `batch.records.processed` custom metric).
+- Cost (Billing export to BigQuery).
+- Elasticity (startup latency metrics).
+- Operability (log review, failure counts).
+
+---
+
+## 6. Metrics, logging, and observability
+
+- Micrometer exposes Prometheus + Stackdriver registries. Enable Google export via:
+  - `STACKDRIVER_METRICS_ENABLED=true`
+  - `GCP_PROJECT_ID=<project>`
+- Key custom metrics:
+  - `batch.job.duration.seconds`
+  - `batch.step.duration.seconds`
+  - `batch.records.processed`
+  - `batch.failure.count`
+- Query Cloud Monitoring for platform metrics (examples in `docs/benchmarking-guide.md`).
+- Logging:
+  - JSON Logback appender (with MDC fields `jobInstanceId`, `jobExecutionId`, `jobName`).
+  - `LoggingStepExecutionListener` + `JobRunLoggingListener` provide structured start/finish logs per step/job.
+  - Filter logs in Cloud Logging with:
+    ```
+    resource.type="cloud_run_job"
+    labels.job_name="spring-batch-benchmark-job"
+    ```
+
+---
+
+## 7. Local development & testing
+
+- Run Postgres & the app locally: `docker-compose up -d && ./run_local.sh`
+- Generate synthetic data: `./tools/generate-data.sh 50000`
+- Tests: `mvn test`
+
+---
+
+## 8. Cleanup (stay within free tier)
+
+- Delete GKE cluster:
+  ```bash
+  gcloud container clusters delete spring-batch-benchmark \
+    --region=us-central1 --project=your-project-id
+  ```
+- Delete Cloud Run Job:
+  ```bash
+  gcloud run jobs delete spring-batch-benchmark-job \
+    --region=us-central1 --project=your-project-id
+  ```
+- Remove unused Cloud SQL databases, images, and GCS objects once experiments conclude.
+
+---
+
+## 9. Reference docs
+
+- `docs/gcp-setup.md` – Cloud SQL, GCS, IAM, cost controls.
+- `docs/benchmarking-guide.md` – KPI definitions, monitoring queries, analysis workflow.
+
+These documents, plus the scripts under `scripts/`, provide the end-to-end workflow needed for the MTech dissertation and reproducible benchmarking between Cloud Run Jobs and GKE.
+
+---
+*This project was developed by Mayank Mayur as part of an M.Tech dissertation.*

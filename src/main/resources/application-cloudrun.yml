@@ -1,0 +1,38 @@
+# Cloud Run-specific configuration
+# Use the Cloud SQL Auth Proxy baked into the container (docker/entrypoint.sh)
+# to connect to Cloud SQL on localhost. We explicitly disable Spring Cloud
+# GCP SQL auto-configuration so that the datasource URL provided by the proxy
+# (SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:<port>/<db>) is used.
+spring:
+  cloud:
+    gcp:
+      # Project ID for GCP integration (metrics, etc.). This is wired from the
+      # env var gcp.project.id in the deploy script, but falls back to the
+      # concrete project for this repo.
+      project-id: ${gcp.project.id:carbon-scene-478408-c4}
+      sql:
+        enabled: false
+
+  sql:
+    init:
+      # The schema should already be created; avoid "relation already exists".
+      mode: never
+
+  batch:
+    job:
+      enabled: true
+
+management:
+  metrics:
+    export:
+      stackdriver:
+        enabled: true
+
+# Keep logging levels for visibility; if the job is stable you can dial these
+# back to INFO/WARN.
+logging:
+  level:
+    com.zaxxer.hikari: DEBUG
+    org.postgresql: DEBUG
+    com.google.cloud.sql: DEBUG
+    com.google.cloud.spring.autoconfigure.sql: DEBUG

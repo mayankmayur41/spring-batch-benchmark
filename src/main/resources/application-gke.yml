@@ -1,0 +1,22 @@
+# GKE-specific configuration
+gcp:
+  project:
+    id: carbon-scene-478408-c4
+
+spring:
+  sql:
+    init:
+      # The schema should only be created once. On subsequent runs, the tables
+      # will already exist, so we set this to 'never' to avoid errors.
+      mode: never
+  batch:
+    # Let Spring Boot run the job on startup
+    job:
+      enabled: true
+
+management:
+  metrics:
+    export:
+      stackdriver:
+        # Enable metrics exporting for GKE
+        enabled: true

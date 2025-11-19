@@ -1,0 +1,2587 @@
+[
+  {
+    "insertId": "-266skyd1jos",
+    "labels": {
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Jobs.RunJob",
+      "resourceName": "namespaces/carbon-scene-478408-c4/executions/spring-batch-benchmark-job-p9t88",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Execution",
+        "apiVersion": "run.googleapis.com/v1",
+        "kind": "Execution",
+        "metadata": {
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "547.0.0",
+            "run.googleapis.com/cloudsql-instances": "carbon-scene-478408-c4:asia-south1:mayank-sql",
+            "run.googleapis.com/creator": "2021hx70047@wilp.bits-pilani.ac.in",
+            "run.googleapis.com/execution-environment": "gen2",
+            "run.googleapis.com/lastModifier": "2021hx70047@wilp.bits-pilani.ac.in",
+            "run.googleapis.com/operation-id": "43449c3d-ed7d-4a46-9713-1f8d5a5f3951"
+          },
+          "creationTimestamp": "2025-11-17T13:51:11.611296Z",
+          "generation": 1,
+          "labels": {
+            "client.knative.dev/nonce": "vow_boq_lin",
+            "cloud.googleapis.com/location": "asia-south1",
+            "run.googleapis.com/job": "spring-batch-benchmark-job",
+            "run.googleapis.com/jobGeneration": "19",
+            "run.googleapis.com/jobResourceVersion": "1763387327854229",
+            "run.googleapis.com/jobUid": "fa2c3914-f81c-4a3d-8a7b-504614a6cf1f",
+            "run.googleapis.com/satisfiesPzs": "true"
+          },
+          "name": "spring-batch-benchmark-job-p9t88",
+          "namespace": "963092372618",
+          "ownerReferences": [
+            {
+              "apiVersion": "serving.knative.dev/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "Job",
+              "name": "spring-batch-benchmark-job",
+              "uid": "fa2c3914-f81c-4a3d-8a7b-504614a6cf1f"
+            }
+          ],
+          "resourceVersion": "AAZDyqdIxFY",
+          "selfLink": "/apis/run.googleapis.com/v1/namespaces/963092372618/executions/spring-batch-benchmark-job-p9t88",
+          "uid": "82a0c202-139b-493c-872e-aa469291706d"
+        },
+        "spec": {
+          "parallelism": 1,
+          "taskCount": 1,
+          "template": {
+            "spec": {
+              "containers": [
+                {
+                  "env": [
+                    {
+                      "name": "DB_HOST",
+                      "value": "localhost"
+                    },
+                    {
+                      "name": "DB_PORT",
+                      "value": "5432"
+                    },
+                    {
+                      "name": "DB_NAME",
+                      "value": "batchdb"
+                    },
+                    {
+                      "name": "SPRING_DATASOURCE_USERNAME",
+                      "value": "batchuser"
+                    },
+                    {
+                      "name": "SPRING_DATASOURCE_PASSWORD",
+                      "value": "postgres"
+                    },
+                    {
+                      "name": "EXIT_ON_COMPLETE",
+                      "value": "true"
+                    },
+                    {
+                      "name": "SPRING_BATCH_JOB_ENABLED",
+                      "value": "true"
+                    },
+                    {
+                      "name": "INPUT_FILE",
+                      "value": "gs://mayank_bucket-271999/datasets/sample-10k.csv"
+                    },
+                    {
+                      "name": "CHUNK_SIZE",
+                      "value": "100"
+                    },
+                    {
+                      "name": "PARTITION_GRID",
+                      "value": "4"
+                    },
+                    {
+                      "name": "RETRY_MAX_ATTEMPTS",
+                      "value": "3"
+                    },
+                    {
+                      "name": "STACKDRIVER_METRICS_ENABLED",
+                      "value": "true"
+                    },
+                    {
+                      "name": "GCP_PROJECT_ID",
+                      "value": "carbon-scene-478408-c4"
+                    },
+                    {
+                      "name": "SPRING_DATASOURCE_URL",
+                      "value": "jdbc:postgresql://google/batchdb"
+                    },
+                    {
+                      "name": "CLOUD_SQL_CONNECTION",
+                      "value": "carbon-scene-478408-c4:asia-south1:mayank-sql"
+                    },
+                    {
+                      "name": "SPRING_DATASOURCE_HIKARI_DATA_SOURCE_PROPERTIES_SOCKET_FACTORY",
+                      "value": "com.google.cloud.sql.postgres.SocketFactory"
+                    },
+                    {
+                      "name": "SPRING_DATASOURCE_HIKARI_DATA_SOURCE_PROPERTIES_CLOUD_SQL_INSTANCE",
+                      "value": "carbon-scene-478408-c4:asia-south1:mayank-sql"
+                    },
+                    {
+                      "name": "SPRING_DATASOURCE_HIKARI_DATA_SOURCE_PROPERTIES_IP_TYPES",
+                      "value": "PUBLIC"
+                    }
+                  ],
+                  "image": "asia-south1-docker.pkg.dev/carbon-scene-478408-c4/batch-repo/spring-batch-benchmark@sha256:851fb8c0b192dd3abf55b12d3cefca6e2b4c973d431b6896eca947582241a601",
+                  "resources": {
+                    "limits": {
+                      "cpu": "1",
+                      "memory": "1Gi"
+                    }
+                  }
+                }
+              ],
+              "maxRetries": 0,
+              "serviceAccountName": "batch-cloud-run-sa@carbon-scene-478408-c4.iam.gserviceaccount.com",
+              "timeoutSeconds": "3600"
+            }
+          }
+        },
+        "status": {
+          "completionTime": "2025-11-17T13:52:09.195317Z",
+          "conditions": [
+            {
+              "lastTransitionTime": "2025-11-17T13:52:09.195317Z",
+              "message": "Task spring-batch-benchmark-job-p9t88-task0 failed with message: The container exited with an error.",
+              "reason": "NonZeroExitCode",
+              "status": "False",
+              "type": "Completed"
+            },
+            {
+              "lastTransitionTime": "2025-11-17T13:51:12.632892Z",
+              "message": "Provisioned imported containers.",
+              "status": "True",
+              "type": "ResourcesAvailable"
+            },
+            {
+              "lastTransitionTime": "2025-11-17T13:51:18.067007Z",
+              "message": "Started deployed execution in 5.43s.",
+              "status": "True",
+              "type": "Started"
+            },
+            {
+              "lastTransitionTime": "2025-11-17T13:51:12.115579Z",
+              "message": "Imported container image.",
+              "status": "True",
+              "type": "ContainerReady"
+            }
+          ],
+          "failedCount": 1,
+          "logUri": "https://console.cloud.google.com/logs/viewer?project=carbon-scene-478408-c4&advancedFilter=resource.type%3D%22cloud_run_job%22%0Aresource.labels.job_name%3D%22spring-batch-benchmark-job%22%0Aresource.labels.location%3D%22asia-south1%22%0Alabels.%22run.googleapis.com/execution_name%22%3D%22spring-batch-benchmark-job-p9t88%22",
+          "observedGeneration": 1,
+          "startTime": "2025-11-17T13:51:14.347686Z"
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "code": 10,
+        "message": "Execution spring-batch-benchmark-job-p9t88 has failed to complete, 0/1 tasks were a success."
+      }
+    },
+    "receiveTimestamp": "2025-11-17T13:52:09.370850719Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "severity": "ERROR",
+    "timestamp": "2025-11-17T13:52:09.293897Z"
+  },
+  {
+    "insertId": "691b2886000556f7d5ebba00",
+    "labels": {
+      "container_name": "worker",
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2025-11-17T13:52:06.353045520Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "severity": "WARNING",
+    "textPayload": "Container called exit(1).",
+    "timestamp": "2025-11-17T13:52:06.349833Z"
+  },
+  {
+    "errorGroups": [
+      {
+        "id": "CJfx-t3g5u_UUw"
+      }
+    ],
+    "insertId": "691b288600045ae03e86d27f",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:52:06.280824902Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "ERROR",
+      "level_value": 40000,
+      "logger_name": "org.springframework.boot.SpringApplication",
+      "message": "Application run failed",
+      "stack_trace": "org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'springBatchBenchmarkApplication': Unsatisfied dependency expressed through field 'jobLauncher': Error creating bean with name 'jobLauncher' defined in class path resource [org/springframework/boot/autoconfigure/batch/BatchAutoConfiguration$SpringBootBatchConfiguration.class]: Failed to instantiate [org.springframework.batch.core.launch.JobLauncher]: Factory method 'jobLauncher' threw exception with message: Unable to configure the default job repository\n\tat org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:772)\n\tat org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:752)\n\tat org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)\n\tat org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:493)\n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1420)\n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)\n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)\n\tat org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)\n\tat org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)\n\tat org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:946)\n\tat org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:616)\n\tat org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)\n\tat org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753)\n\tat org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:455)\n\tat org.springframework.boot.SpringApplication.run(SpringApplication.java:323)\n\tat org.springframework.boot.SpringApplication.run(SpringApplication.java:1342)\n\tat org.springframework.boot.SpringApplication.run(SpringApplication.java:1331)\n\tat com.mayank.batch.SpringBatchBenchmarkApplication.main(SpringBatchBenchmarkApplication.java:70)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)\n\tat java.base/java.lang.reflect.Method.invoke(Unknown Source)\n\tat org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:91)\n\tat org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:53)\n\tat org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:58)\nCaused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jobLauncher' defined in class path resource [org/springframework/boot/autoconfigure/batch/BatchAutoConfiguration$SpringBootBatchConfiguration.class]: Failed to instantiate [org.springframework.batch.core.launch.JobLauncher]: Factory method 'jobLauncher' threw exception with message: Unable to configure the default job repository\n\tat org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655)\n\tat org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:489)\n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1336)\n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1166)\n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)\n\tat org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)\n\tat org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)\n\tat org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)\n\tat org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)\n\tat org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1441)\n\tat org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1348)\n\tat org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:769)\n\t... 27 common frames omitted\nCaused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.batch.core.launch.JobLauncher]: Factory method 'jobLauncher' threw exception with message: Unable to configure the default job repository\n\tat org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178)\n\tat org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:651)\n\t... 40 common frames omitted\nCaused by: org.springframework.batch.core.configuration.BatchConfigurationException: Unable to configure the default job repository\n\tat org.springframework.batch.core.configuration.support.DefaultBatchConfiguration.jobRepository(DefaultBatchConfiguration.java:151)\n\tat org.springframework.batch.core.configuration.support.DefaultBatchConfiguration.jobLauncher(DefaultBatchConfiguration.java:158)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)\n\tat java.base/java.lang.reflect.Method.invoke(Unknown Source)\n\tat org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:140)\n\t... 41 common frames omitted\nCaused by: org.springframework.jdbc.support.MetaDataAccessException: Could not get Connection for extracting meta-data\n\tat org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:362)\n\tat org.springframework.batch.support.DatabaseType.fromMetaData(DatabaseType.java:86)\n\tat org.springframework.batch.core.configuration.support.DefaultBatchConfiguration.getDatabaseType(DefaultBatchConfiguration.java:396)\n\tat org.springframework.batch.core.configuration.support.DefaultBatchConfiguration.jobRepository(DefaultBatchConfiguration.java:134)\n\t... 47 common frames omitted\nCaused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection\n\tat org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:84)\n\tat org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:336)\n\t... 50 common frames omitted\nCaused by: java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.\n\tat com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696)\n\tat com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:181)\n\tat com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:146)\n\tat com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:128)\n\tat org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160)\n\tat org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118)\n\tat org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81)\n\t... 51 common frames omitted\nCaused by: org.postgresql.util.PSQLException: The connection attempt failed.\n\tat org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:354)\n\tat org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)\n\tat org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263)\n\tat org.postgresql.Driver.makeConnection(Driver.java:443)\n\tat org.postgresql.Driver.connect(Driver.java:297)\n\tat com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)\n\tat com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)\n\tat com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)\n\tat com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)\n\tat com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:733)\n\tat com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712)\n\tat java.base/java.util.concurrent.FutureTask.run(Unknown Source)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)\n\tat java.base/java.lang.Thread.run(Unknown Source)\nCaused by: java.net.UnknownHostException: google\n\tat java.base/sun.nio.ch.NioSocketImpl.connect(Unknown Source)\n\tat java.base/java.net.SocksSocketImpl.connect(Unknown Source)\n\tat java.base/java.net.Socket.connect(Unknown Source)\n\tat org.postgresql.core.PGStream.createSocket(PGStream.java:243)\n\tat org.postgresql.core.PGStream.<init>(PGStream.java:98)\n\tat org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132)\n\tat org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258)\n\t... 14 common frames omitted\n",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:52:06.326789811Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:52:06.285408Z"
+  },
+  {
+    "insertId": "691b28860003d58460864a9d",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:52:06.249583362Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger",
+      "message": "\n\nError starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:52:06.326789811Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:52:06.251268Z"
+  },
+  {
+    "insertId": "691b2886000364674f5e54fb",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:52:06.220682525Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "org.apache.catalina.core.StandardService",
+      "message": "Stopping service [Tomcat]",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:52:06.326789811Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:52:06.222311Z"
+  },
+  {
+    "insertId": "691b2886000351bd3d57e752",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:52:06.21582549Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "com.zaxxer.hikari.HikariDataSource",
+      "message": "HikariPool-1 - Shutdown completed.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:52:06.326789811Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:52:06.217533Z"
+  },
+  {
+    "insertId": "691b288600001908118b2cbb",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:52:06.004668619Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "com.zaxxer.hikari.HikariDataSource",
+      "message": "HikariPool-1 - Shutdown initiated...",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:52:06.326789811Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:52:06.006408Z"
+  },
+  {
+    "insertId": "691b2885000f1d502f1fc0c5",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:52:05.98867776Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext",
+      "message": "Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'springBatchBenchmarkApplication': Unsatisfied dependency expressed through field 'jobLauncher': Error creating bean with name 'jobLauncher' defined in class path resource [org/springframework/boot/autoconfigure/batch/BatchAutoConfiguration$SpringBootBatchConfiguration.class]: Failed to instantiate [org.springframework.batch.core.launch.JobLauncher]: Factory method 'jobLauncher' threw exception with message: Unable to configure the default job repository",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:52:05.992689197Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:52:05.990544Z"
+  },
+  {
+    "insertId": "691b2867000f08a859b551fe",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:35.983765403Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "com.zaxxer.hikari.HikariDataSource",
+      "message": "HikariPool-1 - Start completed.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:36.319606020Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:35.985256Z"
+  },
+  {
+    "insertId": "691b2867000ea9af70f1506d",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:35.957247819Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "com.zaxxer.hikari.HikariDataSource",
+      "message": "HikariPool-1 - Starting...",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:35.985974580Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:35.960943Z"
+  },
+  {
+    "insertId": "691b2867000144f52f9ad5af",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:35.081763048Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "io.micrometer.core.instrument.push.PushMeterRegistry",
+      "message": "publishing metrics for StackdriverMeterRegistry every 1m",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:35.320046187Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:35.083189Z"
+  },
+  {
+    "insertId": "691b2864000efc2f533b140e",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:32.981053143Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "com.google.cloud.spring.core.DefaultCredentialsProvider",
+      "message": "Scopes in use by default credentials: [https://www.googleapis.com/auth/pubsub, https://www.googleapis.com/auth/spanner.admin, https://www.googleapis.com/auth/spanner.data, https://www.googleapis.com/auth/datastore, https://www.googleapis.com/auth/sqlservice.admin, https://www.googleapis.com/auth/devstorage.read_only, https://www.googleapis.com/auth/devstorage.read_write, https://www.googleapis.com/auth/cloudruntimeconfig, https://www.googleapis.com/auth/trace.append, https://www.googleapis.com/auth/cloud-platform, https://www.googleapis.com/auth/cloud-vision, https://www.googleapis.com/auth/bigquery, https://www.googleapis.com/auth/monitoring.write]",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:32.989634535Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:32.982063Z"
+  },
+  {
+    "insertId": "691b2864000efbbdc9af1a24",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:32.980672561Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "com.google.cloud.spring.core.DefaultCredentialsProvider",
+      "message": "Default credentials provider for Google Compute Engine.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:32.989634535Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:32.981949Z"
+  },
+  {
+    "insertId": "691b2864000749266346b03a",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:32.476285538Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "com.google.cloud.spring.autoconfigure.core.GcpContextAutoConfiguration",
+      "message": "The default project ID is carbon-scene-478408-c4",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:32.655980518Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:32.477478Z"
+  },
+  {
+    "insertId": "691b28640004487f0925a597",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:32.279589029Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext",
+      "message": "Root WebApplicationContext: initialization completed in 7108 ms",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:32.324714544Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:32.280703Z"
+  },
+  {
+    "insertId": "691b28640004432d10b94660",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:32.278140594Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]",
+      "message": "Initializing Spring embedded WebApplicationContext",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:32.324714544Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:32.279341Z"
+  },
+  {
+    "insertId": "691b2863000ed87a7c99c3ce",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:31.971955111Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "org.apache.catalina.core.StandardEngine",
+      "message": "Starting Servlet engine: [Apache Tomcat/10.1.16]",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:31.990231542Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:31.972922Z"
+  },
+  {
+    "insertId": "691b2863000ed78139dc6386",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:31.971437784Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "org.apache.catalina.core.StandardService",
+      "message": "Starting service [Tomcat]",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:31.990231542Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:31.972673Z"
+  },
+  {
+    "insertId": "691b2863000e9637a6c9280f",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:31.954793911Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "org.springframework.boot.web.embedded.tomcat.TomcatWebServer",
+      "message": "Tomcat initialized with port 8080 (http)",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:31.990231542Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:31.955959Z"
+  },
+  {
+    "insertId": "691b2862000d2e3ee24b8e1c",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.862751893Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration$SpringBootBatchConfiguration' of type [org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration$SpringBootBatchConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [jobRegistryBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.991769103Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.863806Z"
+  },
+  {
+    "insertId": "691b2862000d0880607d1b49",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.853004198Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'spring.batch-org.springframework.boot.autoconfigure.batch.BatchProperties' of type [org.springframework.boot.autoconfigure.batch.BatchProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.991769103Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.854144Z"
+  },
+  {
+    "insertId": "691b2862000bccfdd49c726e",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.772308871Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'transactionManager' of type [org.springframework.jdbc.support.JdbcTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.991769103Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.773373Z"
+  },
+  {
+    "insertId": "691b2862000babeaa0c2bc2e",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.763780264Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.991769103Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.764906Z"
+  },
+  {
+    "insertId": "691b2862000b9cf3830e820c",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.759865177Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.991769103Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.761075Z"
+  },
+  {
+    "insertId": "691b2862000b84856664f649",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.753693875Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'transactionExecutionListeners' of type [org.springframework.boot.autoconfigure.transaction.ExecutionListenersTransactionManagerCustomizer] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.991769103Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.754821Z"
+  },
+  {
+    "insertId": "691b2862000a5e4052715cd9",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.678428256Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizationAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizationAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.991769103Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.679488Z"
+  },
+  {
+    "insertId": "691b2862000a16966620c274",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.660099172Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$JdbcTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$JdbcTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.991769103Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.661142Z"
+  },
+  {
+    "insertId": "691b28620008d39b6093b8a7",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.577387071Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.658316803Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.578459Z"
+  },
+  {
+    "insertId": "691b286200078f856ae165dd",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.494409431Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'jdbcConnectionDetails' of type [org.springframework.boot.autoconfigure.jdbc.PropertiesJdbcConnectionDetails] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.658316803Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.495493Z"
+  },
+  {
+    "insertId": "691b2862000782c24bb866cb",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.491051432Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration$PooledDataSourceConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration$PooledDataSourceConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.658316803Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.492226Z"
+  },
+  {
+    "insertId": "691b28620007601cbbfad4c4",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.482255135Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.658316803Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.483356Z"
+  },
+  {
+    "insertId": "691b28620005e0daa0c01b20",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:30.384109538Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "WARN",
+      "level_value": 30000,
+      "logger_name": "org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker",
+      "message": "Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:30.658316803Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:30.385242Z"
+  },
+  {
+    "insertId": "691b28610000def7981bc03f",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:29.056117277Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "org.springframework.data.repository.config.RepositoryConfigurationDelegate",
+      "message": "Finished Spring Data repository scanning in 82 ms. Found 0 JDBC repository interfaces.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:29.325797309Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:29.057079Z"
+  },
+  {
+    "insertId": "691b2860000ec8239e29fa3b",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:28.967664102Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "org.springframework.data.repository.config.RepositoryConfigurationDelegate",
+      "message": "Bootstrapping Spring Data JDBC repositories in DEFAULT mode.",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:28.992814578Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:28.968739Z"
+  },
+  {
+    "insertId": "691b285c000f03f1705090ae",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:24.981906708Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "com.mayank.batch.SpringBatchBenchmarkApplication",
+      "message": "The following 1 profile is active: \"dev\"",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:24.984049Z"
+  },
+  {
+    "insertId": "691b285c000eff4ca9d36074",
+    "jsonPayload": {
+      "@timestamp": "2025-11-17T13:51:24.96094269Z",
+      "@version": "1",
+      "application": "spring-batch-probe",
+      "environment": "dev",
+      "level": "INFO",
+      "level_value": 20000,
+      "logger_name": "com.mayank.batch.SpringBatchBenchmarkApplication",
+      "message": "Starting SpringBatchBenchmarkApplication v1.0.0 using Java 17.0.17 with PID 1 (/app/app.jar started by appuser in /app)",
+      "thread_name": "main"
+    },
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "timestamp": "2025-11-17T13:51:24.982860Z"
+  },
+  {
+    "insertId": "691b285c000a70c6238310fd",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": " :: Spring Boot ::                (v3.2.0)",
+    "timestamp": "2025-11-17T13:51:24.684230Z"
+  },
+  {
+    "insertId": "691b285c000a6d515902b26c",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": " =========|_|==============|___/=/_/_/_/",
+    "timestamp": "2025-11-17T13:51:24.683345Z"
+  },
+  {
+    "insertId": "691b285c000a6d4d43fdb9cb",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "  '  |____| .__|_| |_|_| |_\\__, | / / / /",
+    "timestamp": "2025-11-17T13:51:24.683341Z"
+  },
+  {
+    "insertId": "691b285c000a6d48e092f91f",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": " \\\\/  ___)| |_)| | | | | || (_| |  ) ) ) )",
+    "timestamp": "2025-11-17T13:51:24.683336Z"
+  },
+  {
+    "insertId": "691b285c000a6d43cb10109e",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "( ( )\\___ | '_ | '_| | '_ \\/ _` | \\ \\ \\ \\",
+    "timestamp": "2025-11-17T13:51:24.683331Z"
+  },
+  {
+    "insertId": "691b285c000a6d3f4f5445b9",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": " /\\\\ / ___'_ __ _ _(_)_ __  __ _ \\ \\ \\ \\",
+    "timestamp": "2025-11-17T13:51:24.683327Z"
+  },
+  {
+    "insertId": "691b285c000a6d319c624b89",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "  .   ____          _            __ _ _",
+    "timestamp": "2025-11-17T13:51:24.683313Z"
+  },
+  {
+    "insertId": "691b285c000a18179627da59",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:24,656 |-INFO in org.springframework.boot.logging.logback.SpringBootJoranConfigurator@7561db12 - Registering current configuration as safe fallback point",
+    "timestamp": "2025-11-17T13:51:24.661527Z"
+  },
+  {
+    "insertId": "691b285c000a18127b5056e7",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:24,655 |-INFO in ch.qos.logback.core.model.processor.DefaultProcessor@4acf72b6 - End of configuration.",
+    "timestamp": "2025-11-17T13:51:24.661522Z"
+  },
+  {
+    "insertId": "691b285c000a180dca585978",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:24,655 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [JSON] to Logger[com.mayank.batch]",
+    "timestamp": "2025-11-17T13:51:24.661517Z"
+  },
+  {
+    "insertId": "691b285c000a1807c1588803",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:24,655 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting additivity of logger [com.mayank.batch] to false",
+    "timestamp": "2025-11-17T13:51:24.661511Z"
+  },
+  {
+    "insertId": "691b285c000a1802a1a9262e",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:24,599 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@a23a01d - Propagating DEBUG level on Logger[com.mayank.batch] onto the JUL framework",
+    "timestamp": "2025-11-17T13:51:24.661506Z"
+  },
+  {
+    "insertId": "691b285c000a17fce81df845",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:24,599 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [com.mayank.batch] to DEBUG",
+    "timestamp": "2025-11-17T13:51:24.661500Z"
+  },
+  {
+    "insertId": "691b285c000a17f70df40d18",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:24,599 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [JSON] to Logger[ROOT]",
+    "timestamp": "2025-11-17T13:51:24.661495Z"
+  },
+  {
+    "insertId": "691b285c000a17f22606de02",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:24,598 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@a23a01d - Propagating INFO level on Logger[ROOT] onto the JUL framework",
+    "timestamp": "2025-11-17T13:51:24.661490Z"
+  },
+  {
+    "insertId": "691b285c000a17eda1d72065",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:24,598 |-INFO in ch.qos.logback.classic.model.processor.RootLoggerModelHandler - Setting level of ROOT logger to INFO",
+    "timestamp": "2025-11-17T13:51:24.661485Z"
+  },
+  {
+    "insertId": "691b285c000a17e7d6994f7c",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:24,598 |-WARN in ch.qos.logback.core.model.processor.AppenderModelHandler - Appender named [CONSOLE] not referenced. Skipping further processing.",
+    "timestamp": "2025-11-17T13:51:24.661479Z"
+  },
+  {
+    "insertId": "691b285c000a17e2999d495f",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]",
+    "timestamp": "2025-11-17T13:51:24.661474Z"
+  },
+  {
+    "insertId": "691b285c000a17ddbbdb3c4c",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [JSON]",
+    "timestamp": "2025-11-17T13:51:24.661469Z"
+  },
+  {
+    "insertId": "691b285c000a17d8a441ecc3",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@a23a01d - Propagating WARN level on Logger[org.springframework.boot.actuate.endpoint.jmx] onto the JUL framework",
+    "timestamp": "2025-11-17T13:51:24.661464Z"
+  },
+  {
+    "insertId": "691b285c000a17d350ba138e",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework.boot.actuate.endpoint.jmx] to WARN",
+    "timestamp": "2025-11-17T13:51:24.661459Z"
+  },
+  {
+    "insertId": "691b285c000a17ce8c183076",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@a23a01d - Propagating WARN level on Logger[org.hibernate.validator.internal.util.Version] onto the JUL framework",
+    "timestamp": "2025-11-17T13:51:24.661454Z"
+  },
+  {
+    "insertId": "691b285c000a17c8470eef63",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate.validator.internal.util.Version] to WARN",
+    "timestamp": "2025-11-17T13:51:24.661448Z"
+  },
+  {
+    "insertId": "691b285c000a17c392061890",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@a23a01d - Propagating ERROR level on Logger[org.eclipse.jetty.util.component.AbstractLifeCycle] onto the JUL framework",
+    "timestamp": "2025-11-17T13:51:24.661443Z"
+  },
+  {
+    "insertId": "691b285c000a17bec4bc2642",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.eclipse.jetty.util.component.AbstractLifeCycle] to ERROR",
+    "timestamp": "2025-11-17T13:51:24.661438Z"
+  },
+  {
+    "insertId": "691b285c000a17b9f2f0356f",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@a23a01d - Propagating WARN level on Logger[org.apache.tomcat.util.net.NioSelectorPool] onto the JUL framework",
+    "timestamp": "2025-11-17T13:51:24.661433Z"
+  },
+  {
+    "insertId": "691b285c000a17b46f39c629",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.tomcat.util.net.NioSelectorPool] to WARN",
+    "timestamp": "2025-11-17T13:51:24.661428Z"
+  },
+  {
+    "insertId": "691b285c000a17ae2b785c9a",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@a23a01d - Propagating WARN level on Logger[org.apache.sshd.common.util.SecurityUtils] onto the JUL framework",
+    "timestamp": "2025-11-17T13:51:24.661422Z"
+  },
+  {
+    "insertId": "691b285c000a17a92fe57201",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.sshd.common.util.SecurityUtils] to WARN",
+    "timestamp": "2025-11-17T13:51:24.661417Z"
+  },
+  {
+    "insertId": "691b285c000a17a3e7e5cb09",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@a23a01d - Propagating WARN level on Logger[org.apache.coyote.http11.Http11NioProtocol] onto the JUL framework",
+    "timestamp": "2025-11-17T13:51:24.661411Z"
+  },
+  {
+    "insertId": "691b285c000a179edeaa6c23",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.coyote.http11.Http11NioProtocol] to WARN",
+    "timestamp": "2025-11-17T13:51:24.661406Z"
+  },
+  {
+    "insertId": "691b285c000a179972c43ab9",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@a23a01d - Propagating ERROR level on Logger[org.apache.catalina.util.LifecycleBase] onto the JUL framework",
+    "timestamp": "2025-11-17T13:51:24.661401Z"
+  },
+  {
+    "insertId": "691b285c000a1793ff1e4403",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,987 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.util.LifecycleBase] to ERROR",
+    "timestamp": "2025-11-17T13:51:24.661395Z"
+  },
+  {
+    "insertId": "691b285c000a178e1a6e5bb4",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,986 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@a23a01d - Propagating ERROR level on Logger[org.apache.catalina.startup.DigesterFactory] onto the JUL framework",
+    "timestamp": "2025-11-17T13:51:24.661390Z"
+  },
+  {
+    "insertId": "691b285c000a17896e0f8c05",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,986 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.startup.DigesterFactory] to ERROR",
+    "timestamp": "2025-11-17T13:51:24.661385Z"
+  },
+  {
+    "insertId": "691b285c000a178344f98ced",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,871 |-INFO in ch.qos.logback.core.joran.action.ConversionRuleAction - registering conversion word wEx with class [org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter]",
+    "timestamp": "2025-11-17T13:51:24.661379Z"
+  },
+  {
+    "insertId": "691b285c000a177915c3554b",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,871 |-INFO in ch.qos.logback.core.joran.action.ConversionRuleAction - registering conversion word wex with class [org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter]",
+    "timestamp": "2025-11-17T13:51:24.661369Z"
+  },
+  {
+    "insertId": "691b285c000a1763d794f824",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,871 |-INFO in ch.qos.logback.core.joran.action.ConversionRuleAction - registering conversion word correlationId with class [org.springframework.boot.logging.logback.CorrelationIdConverter]",
+    "timestamp": "2025-11-17T13:51:24.661347Z"
+  },
+  {
+    "insertId": "691b285c000a175db1c3afd9",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,871 |-INFO in ch.qos.logback.core.joran.action.ConversionRuleAction - registering conversion word clr with class [org.springframework.boot.logging.logback.ColorConverter]",
+    "timestamp": "2025-11-17T13:51:24.661341Z"
+  },
+  {
+    "insertId": "691b285c000a17580754ce55",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,867 |-INFO in ch.qos.logback.core.joran.spi.ConfigurationWatchList@619bd14c - URL [jar:nested:/app/app.jar/!BOOT-INF/lib/spring-boot-3.2.0.jar!/org/springframework/boot/logging/logback/defaults.xml] is not of type file",
+    "timestamp": "2025-11-17T13:51:24.661336Z"
+  },
+  {
+    "insertId": "691b285c000a17528cbc790f",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,867 |-INFO in ch.qos.logback.core.joran.util.ConfigurationWatchListUtil@323e8306 - Adding [jar:nested:/app/app.jar/!BOOT-INF/lib/spring-boot-3.2.0.jar!/org/springframework/boot/logging/logback/defaults.xml] to configuration watch list.",
+    "timestamp": "2025-11-17T13:51:24.661330Z"
+  },
+  {
+    "insertId": "691b285c000a174b01ed7103",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:22,660 |-INFO in ch.qos.logback.core.joran.spi.ConfigurationWatchList@619bd14c - URL [jar:nested:/app/app.jar/!BOOT-INF/classes/!/logback-spring.xml] is not of type file",
+    "timestamp": "2025-11-17T13:51:24.661323Z"
+  },
+  {
+    "insertId": "691b285c000a1745827a9020",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,588 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - ch.qos.logback.classic.BasicConfigurator.configure() call lasted 32 milliseconds. ExecutionStatus=NEUTRAL",
+    "timestamp": "2025-11-17T13:51:24.661317Z"
+  },
+  {
+    "insertId": "691b285c000a1740277ee081",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,556 |-INFO in ch.qos.logback.classic.BasicConfigurator@6754ef00 - Setting up default configuration.",
+    "timestamp": "2025-11-17T13:51:24.661312Z"
+  },
+  {
+    "insertId": "691b285c000a173a1c72afa1",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.996933846Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,556 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - Constructed configurator of type class ch.qos.logback.classic.BasicConfigurator",
+    "timestamp": "2025-11-17T13:51:24.661306Z"
+  },
+  {
+    "insertId": "691b285c000a1735cb97ab14",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,555 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - Trying to configure with ch.qos.logback.classic.BasicConfigurator",
+    "timestamp": "2025-11-17T13:51:24.661301Z"
+  },
+  {
+    "insertId": "691b285c000a172fd020280c",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,555 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - ch.qos.logback.classic.util.DefaultJoranConfigurator.configure() call lasted 48 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY",
+    "timestamp": "2025-11-17T13:51:24.661295Z"
+  },
+  {
+    "insertId": "691b285c000a1727220910b5",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,555 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.xml]",
+    "timestamp": "2025-11-17T13:51:24.661287Z"
+  },
+  {
+    "insertId": "691b285c000a1722c8078202",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,554 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]",
+    "timestamp": "2025-11-17T13:51:24.661282Z"
+  },
+  {
+    "insertId": "691b285c000a171d0c8ff419",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,507 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - Constructed configurator of type class ch.qos.logback.classic.util.DefaultJoranConfigurator",
+    "timestamp": "2025-11-17T13:51:24.661277Z"
+  },
+  {
+    "insertId": "691b285c000a17184fa51046",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,506 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - Trying to configure with ch.qos.logback.classic.util.DefaultJoranConfigurator",
+    "timestamp": "2025-11-17T13:51:24.661272Z"
+  },
+  {
+    "insertId": "691b285c000a171235b13f11",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,506 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - ch.qos.logback.classic.joran.SerializedModelConfigurator.configure() call lasted 40 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY",
+    "timestamp": "2025-11-17T13:51:24.661266Z"
+  },
+  {
+    "insertId": "691b285c000a170dacabe32b",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,506 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.scmo]",
+    "timestamp": "2025-11-17T13:51:24.661261Z"
+  },
+  {
+    "insertId": "691b285c000a17084886368d",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,505 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.scmo]",
+    "timestamp": "2025-11-17T13:51:24.661256Z"
+  },
+  {
+    "insertId": "691b285c000a17035fcad8b9",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,466 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - Constructed configurator of type class ch.qos.logback.classic.joran.SerializedModelConfigurator",
+    "timestamp": "2025-11-17T13:51:24.661251Z"
+  },
+  {
+    "insertId": "691b285c000a16fd6d0fbdf7",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,458 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - Trying to configure with ch.qos.logback.classic.joran.SerializedModelConfigurator",
+    "timestamp": "2025-11-17T13:51:24.661245Z"
+  },
+  {
+    "insertId": "691b285c000a16f7336e7ba2",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,458 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - org.springframework.boot.logging.logback.RootLogLevelConfigurator.configure() call lasted 57 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY",
+    "timestamp": "2025-11-17T13:51:24.661239Z"
+  },
+  {
+    "insertId": "691b285c000a16f15bfd0cb1",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,395 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - Constructed configurator of type class org.springframework.boot.logging.logback.RootLogLevelConfigurator",
+    "timestamp": "2025-11-17T13:51:24.661233Z"
+  },
+  {
+    "insertId": "691b285c000a16eae3725588",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,395 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - They will be invoked in order until ExecutionStatus.DO_NOT_INVOKE_NEXT_IF_ANY is returned.",
+    "timestamp": "2025-11-17T13:51:24.661226Z"
+  },
+  {
+    "insertId": "691b285c000a16e350be3a61",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,395 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c -   org.springframework.boot.logging.logback.RootLogLevelConfigurator",
+    "timestamp": "2025-11-17T13:51:24.661219Z"
+  },
+  {
+    "insertId": "691b285c000a16dcf4fe0c1c",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,395 |-INFO in ch.qos.logback.classic.util.ContextInitializer@3a7704c - Here is a list of configurators discovered as a service, by rank: ",
+    "timestamp": "2025-11-17T13:51:24.661212Z"
+  },
+  {
+    "insertId": "691b285c000a16bf95217fba",
+    "labels": {
+      "instanceId": "00147782969b785542bbb3df18bab52184a39983e2ff8eefac68ef4b83fc76ea305e0a4ee170668d5da01ec6ea9f793ce623d603499955acd9b4c0f49c78a4d1e4a170385d6beeb8216c513aa8",
+      "run.googleapis.com/execution_name": "spring-batch-benchmark-job-p9t88",
+      "run.googleapis.com/task_attempt": "0",
+      "run.googleapis.com/task_index": "0"
+    },
+    "logName": "projects/carbon-scene-478408-c4/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2025-11-17T13:51:24.663580275Z",
+    "resource": {
+      "labels": {
+        "job_name": "spring-batch-benchmark-job",
+        "location": "asia-south1",
+        "project_id": "carbon-scene-478408-c4"
+      },
+      "type": "cloud_run_job"
+    },
+    "textPayload": "13:51:20,390 |-INFO in ch.qos.logback.classic.LoggerContext[default] - This is logback-classic version 1.4.11",
+    "timestamp": "2025-11-17T13:51:24.661183Z"
+  }
+]

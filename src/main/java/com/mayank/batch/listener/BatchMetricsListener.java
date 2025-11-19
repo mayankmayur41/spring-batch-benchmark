@@ -3,6 +3,9 @@ package com.mayank.batch.listener;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.StepExecution;
@@ -17,6 +20,8 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 public class BatchMetricsListener implements JobExecutionListener {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(BatchMetricsListener.class);
 
     private final Counter recordsProcessedCounter;
     private final Counter failureCounter;
@@ -50,6 +55,9 @@ public class BatchMetricsListener implements JobExecutionListener {
     public void afterJob(JobExecution jobExecution) {
         long duration = System.currentTimeMillis() - jobStartTime;
         jobDurationTimer.record(duration, TimeUnit.MILLISECONDS);
+        if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
+            LOGGER.info("Mayank Success");
+        }
     }
 
     @BeforeStep
